@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">SODFUHelper</string>
+    <string name="osago">ОСАГО</string>
+    <string name="casco">КАСКО</string>
+    <string name="dateNTE">ДАТА ЭКСПЕРТИЗЫ</string>
+    <string name="admit">ФО признала</string>
+    <string name="noadmit">ФО не признала</string>
+    <string name="complex">Комплекс</string>
+    <string name="uts">УТС</string>
+    <string name="property">Имущество</string>
+    <string name="ntetype">Тип экспертизы</string>
+    <string name="docspresence">Наличие документов</string>
+    <string name="docsyes">Есть</string>
+    <string name="docsno">Нет</string>
+    <string name="docsquality">Качество документов</string>
+    <string name="docsqualityyes">Надлежащее</string>
+    <string name="docsqualityno">Ненадлежащее</string>
+    <string name="region">Регион</string>
+    <string name="check">ПРОВЕРИТЬ</string>
+    <string name="answer">ОТВЕТ</string>
+    <string name="chooseregion">Выберите регион</string>
+    <string name="period1">с 01.01.2017 по 30.06.2017</string>
+    <string name="period2">с 01.07.2017 по 31.12.2017</string>
+    <string name="rightsumm">Введите верную величину стоимости экспертизы</string>
+    <string name="Decision">Страховое возмещения</string>
+    <string name="DecisionValueOn">Подлежит взысканию</string>
+    <string name="DecisionValueOаа">Не подлежит взысканию</string>
 </resources>

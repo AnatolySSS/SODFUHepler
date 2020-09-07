@@ -10,60 +10,62 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/setDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Дата экспертизы"
-            android:onClick="setDate"/>
+            android:onClick="setDate"
+            android:text="@string/dateNTE" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <RadioGroup
             android:id="@+id/osagoCasco"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/osagoBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ОСАГО" />
+                android:text="@string/osago" />
 
             <RadioButton
                 android:id="@+id/cascoBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="КАСКО" />
+                android:text="@string/casco" />
         </RadioGroup>
 
         <RadioGroup
             android:id="@+id/approveReject"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/approveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ФО признала" />
+                android:text="@string/admit" />
 
             <RadioButton
                 android:id="@+id/rejectBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ФО не признала" />
+                android:text="@string/noadmit" />
         </RadioGroup>
     </LinearLayout>
 
@@ -76,41 +78,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Тип экспертизы" />
+            android:paddingLeft="10dp"
+            android:text="@string/ntetype" />
 
         <RadioGroup
             android:id="@+id/Type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/ComplexBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Комплекс" />
+                android:text="@string/complex" />
 
             <RadioButton
                 android:id="@+id/UTSBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="УТС" />
+                android:text="@string/uts" />
 
             <RadioButton
                 android:id="@+id/PropertyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Имущество" />
+                android:text="@string/property" />
 
         </RadioGroup>
 
@@ -125,6 +129,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <RadioGroup
@@ -138,46 +143,89 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Наличие документов" />
+                android:paddingLeft="10dp"
+                android:text="@string/docspresence" />
 
             <RadioButton
                 android:id="@+id/DocsYes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Есть" />
+                android:text="@string/docsyes" />
 
             <RadioButton
                 android:id="@+id/DocsNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Нет" />
+                android:text="@string/docsno" />
         </RadioGroup>
 
         <RadioGroup
             android:id="@+id/DocsQuality"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Качество документов" />
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/docsquality" />
 
             <RadioButton
                 android:id="@+id/DocsIsOK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Надлежащее" />
+                android:text="@string/docsqualityyes" />
 
             <RadioButton
                 android:id="@+id/DocsIsNotOK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Не надлежащее" />
+                android:text="@string/docsqualityno" />
         </RadioGroup>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Decision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/Decision" />
+
+        <RadioGroup
+            android:id="@+id/DecisionValue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/DecisionValueOn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/DecisionValueOn" />
+
+            <RadioButton
+                android:id="@+id/DecisionValueOff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/DecisionValueOаа" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
 
     <View
         android:id="@+id/divider3"
@@ -188,13 +236,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Регион" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/region" />
 
         <Spinner
             android:id="@+id/regions"
@@ -206,26 +257,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/checkbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ПРОВЕРИТЬ" />
+            android:text="@string/check" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="answer" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/answerDesicion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/answerBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/answerSumm"
+            android:textSize="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="center" />
     </LinearLayout>
 
 
