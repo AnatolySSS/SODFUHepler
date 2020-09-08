@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.scorp.sodfuhelper.data.DBHelper;
+
 import static com.scorp.sodfuhelper.data.Contract.Entry.*;
 
 import java.util.Calendar;
@@ -94,18 +95,18 @@ public class MainActivity extends AppCompatActivity {
         DocsQuality = findViewById(R.id.DocsQuality);
         DecisionValue = findViewById(R.id.DecisionValue);
 
-        //Create a database
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getReadableDatabase();
-
-        String[] projection  = {
+        String[] projection = {
                 CULUMN_REGION
         };
 
+        //Create a database
+        dbHelper = new DBHelper(this);
+        db = dbHelper.open();
+
         cursor = db.query(TABLE_NAME, projection, null, null, null, null, null);
         allRegions = new String[cursor.getCount()];
-        int i =0;
-        while (cursor.moveToNext()){
+        int i = 0;
+        while (cursor.moveToNext()) {
 
             int columnIndex = cursor.getColumnIndex(CULUMN_REGION);
             allRegions[i] = cursor.getString(columnIndex);
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         final Calendar c01062019 = Calendar.getInstance();
-        c01062019.set(2019,5,1,0,0,0);
+        c01062019.set(2019, 5, 1, 0, 0, 0);
 
         checkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,21 +168,21 @@ public class MainActivity extends AppCompatActivity {
                                         } else {
                                             answerSumm.setText("");
                                         }
-                                    //Docs id not ok
+                                        //Docs id not ok
                                     } else {
                                         //answer.setText("ОТКАЗ. Основание: ненадлежащие документы");
                                         answerDesicion.setText(OTK);
                                         answerBase.setText("Ненадлежащие документы");
                                         answerSumm.setText("");
                                     }
-                                //Docs is off
+                                    //Docs is off
                                 } else {
                                     //answer.setText("ОТКАЗ. Основание: нет документов");
                                     answerDesicion.setText(OTK);
                                     answerBase.setText("Нет документов");
                                     answerSumm.setText("");
                                 }
-                            // UTS
+                                // UTS
                             } else if (TypeBtnStr.equals("УТС")) {
                                 //Docs is on
                                 if (DocsBtnStr.equals("Есть")) {
@@ -191,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                                         answerDesicion.setText(UDOV);
                                         answerBase.setText("В полном размере");
                                         answerSumm.setText("");
-                                    //Docs is not ok
+                                        //Docs is not ok
                                     } else {
                                         /*answer.setText("УДОВЛЕТВОРЕНИЕ. Основание: по среднему: " + selectedValueReg +
                                                 " рублей 00 копеек, ненадлежащие документы");*/
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                                             answerSumm.setText("");
                                         }
                                     }
-                                //Docs is off
+                                    //Docs is off
                                 } else {
                                     /*answer.setText("УДОВЛЕТВОРЕНИЕ. Основание: по среднему: " + selectedValueReg +
                                             " рублей 00 копеек, нет документов");*/
@@ -215,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                                         answerSumm.setText("");
                                     }
                                 }
-                            // Property
+                                // Property
                             } else if (TypeBtnStr.equals("Имущество")) {
                                 //Docs is on
                                 if (DocsBtnStr.equals("Есть")) {
@@ -225,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
                                         answerDesicion.setText(UDOV);
                                         answerBase.setText("В полном размере");
                                         answerSumm.setText("");
-                                    //Docs is not ok
+                                        //Docs is not ok
                                     } else {
                                         //answer.setText("УДОВЛЕТВОРЕНИЕ. Основание: по среднему, ненадлежащие документы");
                                         answerDesicion.setText(UDOV);
@@ -236,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
                                             answerSumm.setText("");
                                         }
                                     }
-                                //Docs is off
+                                    //Docs is off
                                 } else {
                                     //answer.setText("УДОВЛЕТВОРЕНИЕ. Основание: по среднему, нет документов");
                                     answerDesicion.setText(UDOV);
@@ -248,19 +249,19 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-                        // FO not approve nte
+                            // FO not approve nte
                         } else {
                             //Date after 01/06/2019
-                            if(dateAndTime.compareTo(c01062019) >= 0){
+                            if (dateAndTime.compareTo(c01062019) >= 0) {
                                 //answer.setText("ОТКАЗ. Основание: после 01 июня 2019 года");
                                 answerDesicion.setText(OTK);
                                 answerBase.setText("После 01 июня 2019 года");
                                 answerSumm.setText("");
-                            //Date before 01/06/2019
+                                //Date before 01/06/2019
                             } else {
                                 //Approve claim
                                 RadioButton DecisionValueOn = findViewById(R.id.DecisionValueOn);
-                                if(DecisionValueBtnStr.equals(DecisionValueOn.getText())){
+                                if (DecisionValueBtnStr.equals(DecisionValueOn.getText())) {
                                     // Complex
                                     if (TypeBtnStr.equals("Комплекс")) {
                                         //Docs is on
@@ -357,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }
                                     }
-                                //Not approve claim
+                                    //Not approve claim
                                 } else {
                                     //answer.setText("ОТКАЗ. Основание: как неиспользованную");
                                     answerDesicion.setText(OTK);
@@ -374,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
                         answerSumm.setText("");
                     }
                 } catch (Exception e) {
-                Toast.makeText(MainActivity.this,"Нужно выбрать все пункты", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Нужно выбрать все пункты", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -395,7 +396,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(MainActivity.this,"Something gone wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Something gone wrong", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -418,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton DecisionValueOn = findViewById(R.id.DecisionValueOn);
         RadioButton DecisionValueOff = findViewById(R.id.DecisionValueOff);
 
-        if (osagoCasco.getCheckedRadioButtonId() == -1){
+        if (osagoCasco.getCheckedRadioButtonId() == -1) {
             textColor = ContextCompat.getColor(this, R.color.colorEmpty);
             osagoBtn.setTextColor(textColor);
             cascoBtn.setTextColor(textColor);
@@ -428,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
             cascoBtn.setTextColor(textColor);
         }
 
-        if (approveReject.getCheckedRadioButtonId() == -1){
+        if (approveReject.getCheckedRadioButtonId() == -1) {
             textColor = ContextCompat.getColor(this, R.color.colorEmpty);
             approveBtn.setTextColor(textColor);
             rejectBtn.setTextColor(textColor);
@@ -438,7 +439,7 @@ public class MainActivity extends AppCompatActivity {
             rejectBtn.setTextColor(textColor);
         }
 
-        if (Type.getCheckedRadioButtonId() == -1){
+        if (Type.getCheckedRadioButtonId() == -1) {
             textColor = ContextCompat.getColor(this, R.color.colorEmpty);
             ComplexBtn.setTextColor(textColor);
             UTSBtn.setTextColor(textColor);
@@ -450,7 +451,7 @@ public class MainActivity extends AppCompatActivity {
             PropertyBtn.setTextColor(textColor);
         }
 
-        if (Docs.getCheckedRadioButtonId() == -1){
+        if (Docs.getCheckedRadioButtonId() == -1) {
             textColor = ContextCompat.getColor(this, R.color.colorEmpty);
             DocsYes.setTextColor(textColor);
             DocsNo.setTextColor(textColor);
@@ -460,7 +461,7 @@ public class MainActivity extends AppCompatActivity {
             DocsNo.setTextColor(textColor);
         }
 
-        if (DocsQuality.getCheckedRadioButtonId() == -1){
+        if (DocsQuality.getCheckedRadioButtonId() == -1) {
             textColor = ContextCompat.getColor(this, R.color.colorEmpty);
             DocsIsOK.setTextColor(textColor);
             DocsIsNotOK.setTextColor(textColor);
@@ -470,7 +471,7 @@ public class MainActivity extends AppCompatActivity {
             DocsIsNotOK.setTextColor(textColor);
         }
 
-        if (DecisionValue.getCheckedRadioButtonId() == -1){
+        if (DecisionValue.getCheckedRadioButtonId() == -1) {
             textColor = ContextCompat.getColor(this, R.color.colorEmpty);
             DecisionValueOn.setTextColor(textColor);
             DecisionValueOff.setTextColor(textColor);
@@ -483,7 +484,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayDatabaseInfo() {
 
-        String[] projection  = {
+        String[] projection = {
                 CULUMN_PERIOD1,
                 CULUMN_PERIOD2,
                 CULUMN_PERIOD3,
@@ -498,28 +499,28 @@ public class MainActivity extends AppCompatActivity {
         cursor.moveToFirst();
 
         Calendar c01012018 = Calendar.getInstance();
-        c01012018.set(2018,0,1);
+        c01012018.set(2018, 0, 1);
 
         Calendar c01072018 = Calendar.getInstance();
-        c01072018.set(2018,6,1);
+        c01072018.set(2018, 6, 1);
 
         Calendar c01012019 = Calendar.getInstance();
-        c01012019.set(2019,0,1);
+        c01012019.set(2019, 0, 1);
 
         Calendar c01072019 = Calendar.getInstance();
-        c01072019.set(2019,6,1);
+        c01072019.set(2019, 6, 1);
 
         Calendar c01012020 = Calendar.getInstance();
-        c01012020.set(2020,0,1);
+        c01012020.set(2020, 0, 1);
 
         int columnIndex;
-        if (dateAndTime.compareTo(c01072018) >= 0 && dateAndTime.compareTo(c01012019) < 0){
+        if (dateAndTime.compareTo(c01072018) >= 0 && dateAndTime.compareTo(c01012019) < 0) {
             columnIndex = cursor.getColumnIndex(CULUMN_PERIOD1);
             selectedValueReg = cursor.getInt(columnIndex);
-        } else if (dateAndTime.compareTo(c01012019) >= 0 && dateAndTime.compareTo(c01072019) < 0){
+        } else if (dateAndTime.compareTo(c01012019) >= 0 && dateAndTime.compareTo(c01072019) < 0) {
             columnIndex = cursor.getColumnIndex(CULUMN_PERIOD2);
             selectedValueReg = cursor.getInt(columnIndex);
-        } else if (dateAndTime.compareTo(c01072019) >= 0 && dateAndTime.compareTo(c01012020) < 0){
+        } else if (dateAndTime.compareTo(c01072019) >= 0 && dateAndTime.compareTo(c01012020) < 0) {
             columnIndex = cursor.getColumnIndex(CULUMN_PERIOD3);
             selectedValueReg = cursor.getInt(columnIndex);
         } else {
@@ -564,18 +565,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean onTouchEvent (MotionEvent touchevent){
-        switch (touchevent.getAction()){
+    public boolean onTouchEvent(MotionEvent touchevent) {
+        switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchevent.getX();
                 break;
             case MotionEvent.ACTION_UP:
                 x2 = touchevent.getX();
-                if(x1 > x2 + 300){
+                if (x1 > x2 + 300) {
                     Intent intent = new Intent(this, ChangeValuesOfNte.class);
                     startActivity(intent);
                     //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                } else if (x1 < x2 - 300){
+                } else if (x1 < x2 - 300) {
                     Intent intent = new Intent(this, ChangeValuesOfNte.class);
                     startActivity(intent);
                     //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
