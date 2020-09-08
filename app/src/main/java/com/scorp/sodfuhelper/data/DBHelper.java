@@ -23,8 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         DATABASE_PATH = context.getFilesDir().getPath() + "/" + DATABASE_NAME;
         Log.d("DATABASE_PATH", DATABASE_PATH);
-        create_db();
         this.myContext = context;
+        create_db();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
             if (!file.exists()) {
                 this.getReadableDatabase();
                 //получаем локальную бд как поток
-                myInput = myContext.getAssets().open(DATABASE_NAME);
+                myInput = myContext.getAssets().open("databases/" + DATABASE_NAME);
                 // Путь к новой бд
                 String outFileName = DATABASE_PATH;
 
